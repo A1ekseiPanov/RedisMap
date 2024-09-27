@@ -51,8 +51,10 @@ public class RedisMap implements Map<String, String> {
     @Override
     public String put(String key, String value) {
         try (Jedis jedis = jedis()) {
+            String v = get(key);
             jedis.hset(hashTableName, key, value);
-            return value;
+                return v;
+
         }
     }
 
